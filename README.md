@@ -9,6 +9,10 @@
 
 
 
+This project will offer services for traveling and places to go and to book hotels on the app.
+
+As a user, I can see the places that may want to go and to book a hotel on these places and to book transportation services .
+
 
 
 
