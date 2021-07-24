@@ -12,13 +12,18 @@ import {
 } from "react-router-dom";
 
 class Header extends React.Component {
+ constructor(props){
+     super(props)
+ }
+
     render() {
         const { user, isAuthenticated } = this.props.auth0;
 
         return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Link to="/"><Navbar.Brand>Travel Agency</Navbar.Brand></Link>
-                <Link to="/">Home</Link>
+                <Link to="/" onClick={this.props.hidePlace}><Navbar.Brand>Travel Agency</Navbar.Brand></Link>
+                <Link to="/" onClick={this.props.hidePlace}>Home</Link>
+
                 <Link to="/profile">Profile</Link>
 
                 {/* TODO: if the user is logged in, render the `LogoutButton` - if the user is logged out, render the `LoginButton` */}
