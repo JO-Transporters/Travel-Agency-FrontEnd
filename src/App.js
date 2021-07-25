@@ -19,7 +19,8 @@ class App extends React.Component {
     super(props)
     this.state = {
       showPlace: false,
-      place : {}
+      place : {},
+      index : 0,
     }
   }
 
@@ -27,7 +28,9 @@ class App extends React.Component {
   selectedPlace = async (place , index) => {
      await this.setState({
       showPlace : true,
-      place : place
+      place : place,
+      index : index,
+
      })
   }
 
@@ -49,7 +52,7 @@ class App extends React.Component {
           <Switch>
 
             <Route exact path="/">
-              {this.state.showPlace ? <Place place={this.state.place}/> : <Main selectedPlace={this.selectedPlace} />}
+              {this.state.showPlace ? <Place place={this.state.place} index = {this.state.index}/> : <Main selectedPlace={this.selectedPlace} />}
             </Route>
 
             <Route exact path="/profile">
