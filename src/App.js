@@ -48,7 +48,6 @@ class App extends React.Component {
         <Router>
           <Header hidePlace={this.hidePlace}/>
 
-
           <Switch>
 
             <Route exact path="/">
