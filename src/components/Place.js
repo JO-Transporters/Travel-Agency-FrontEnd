@@ -3,17 +3,28 @@ import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap/';
 import AddHotelModal from './buttons/AddHotelModal';
 import UpdateHotel from './buttons/UpdateHotel';
+import AddBookModal from './buttons/AddBookModal';
+import { withAuth0 } from '@auth0/auth0-react';
+import LoginButton from './buttons/LoginButton';
+import LoginAlert from './LoginAlert';
+
 
 
 class Place extends React.Component {
+
     constructor(props) {
         super(props)
         this.state = {
             showAddHotel: false,
             hotelsArray: [],
-            showHotelUpdate : false,
-            hotelIndex : 0,
-            hotelObj : {}
+            showHotelUpdate: false,
+            hotelIndex: 0,
+            hotelObj: {},
+            showBookModal: false,
+            hotelName: "",
+            bookedData: [],
+            alert: false,
+
         }
     }
 
@@ -26,6 +37,23 @@ class Place extends React.Component {
         })
 
 
+    }
+
+    bookNow = async (hotelName) => {
+
+
+        await this.setState({
+            hotelName: hotelName,
+            showBookModal: true,
+            alert: true,
+
+        })
+    }
+
+    setShow = async () => {
+        await this.setState({
+            alert: false
+        })
     }
 
     addHotel = async () => {
@@ -58,13 +86,14 @@ class Place extends React.Component {
     handleClose = async () => {
         await this.setState({
             showAddHotel: false,
-            showHotelUpdate : false,
+            showHotelUpdate: false,
+            showBookModal: false
 
         })
     }
 
 
-    deleteHotel = async (hotelIndex) =>{
+    deleteHotel = async (hotelIndex) => {
 
         let hotelData = await axios.delete(`http://localhost:3001/deletehotel/${this.props.index}/${hotelIndex}`)
 
@@ -75,22 +104,22 @@ class Place extends React.Component {
 
     }
 
-    updateHotel = async (hotelIndex) =>{
-      await  this.setState({
-            showHotelUpdate : true,
-            hotelIndex : hotelIndex,
-            hotelObj : this.state.hotelsArray[hotelIndex],
+    updateHotel = async (hotelIndex) => {
+        await this.setState({
+            showHotelUpdate: true,
+            hotelIndex: hotelIndex,
+            hotelObj: this.state.hotelsArray[hotelIndex],
         })
     }
 
-    handleUpdate = async (event) =>{
+    handleUpdate = async (event) => {
         event.preventDefault();
 
         let updatedHotelObj = {
-            hotelName : event.target.name.value,
-            hotelimg : event.target.img.value,
-            hotelRate : event.target.rate.value,
-            location : event.target.location.value,
+            hotelName: event.target.name.value,
+            hotelimg: event.target.img.value,
+            hotelRate: event.target.rate.value,
+            location: event.target.location.value,
 
         }
 
@@ -101,13 +130,41 @@ class Place extends React.Component {
         await this.setState({
             hotelsArray: hotelData.data[this.props.index].hotels,
 
-            showHotelUpdate : false,
+            showHotelUpdate: false,
         })
     }
 
+    handelBookForm = async (event) => {
+        event.preventDefault();
+        {/* // hotelName, checkInDate, checkOutDate, visitorsNum, roomsNum, kidsNum, userName, userEmail, phoneNumber */ }
+        const { user, isAuthenticated } = this.props.auth0;
+        let bookedObj = {
+
+            hotelName: this.state.hotelName,
+            checkInDate: event.target.checkInDate.value,
+            checkOutDate: event.target.checkOutDate.value,
+            visitorsNum: event.target.visitorsNum.value,
+            roomsNum: event.target.roomsNum.value,
+            kidsNum: event.target.kidsNum.value,
+            phoneNumber: event.target.phoneNumber.value,
+            userName : user.name,
+            userEmail : user.email
+
+        }
+        await axios.post(`http://localhost:3001/addnewbook`, bookedObj);
+
+        await this.setState({
+            showBookModal: false
+        })
+
+    }
+
     render() {
+        const { user, isAuthenticated } = this.props.auth0;
         return (
+
             <div>
+
 
                 <Button onClick={this.addHotel} variant="primary">Add Hotel</Button>
 
@@ -115,15 +172,19 @@ class Place extends React.Component {
                     handleClose={this.handleClose}
                     handleForm={this.handleForm} />
 
-                    <UpdateHotel show ={this.state.showHotelUpdate}
-                     handleClose={this.handleClose}
-                     hotelObj = {this.state.hotelObj}
-                     handleUpdate={this.handleUpdate}/>
+                <UpdateHotel show={this.state.showHotelUpdate}
+                    handleClose={this.handleClose}
+                    hotelObj={this.state.hotelObj}
+                    handleUpdate={this.handleUpdate} />
+
+
+                {this.state.alert && <>{isAuthenticated ? <AddBookModal show={this.state.showBookModal} handleClose={this.handleClose} hotelName={this.state.hotelName} handleForm={this.handelBookForm}/> : <LoginAlert setShow={this.setShow} />}</>}
+
 
                 <h2>{this.props.place.name}</h2>
 
 
-                {this.state.hotelsArray.map((hotel,hotelIndex) => {
+                {this.state.hotelsArray.map((hotel, hotelIndex) => {
                     return (
                         <Card className="place" style={{ width: '18rem', backgroundColor: 'lightgrey', boxShadow: '2px 2px 2px black' }} >
 
@@ -142,9 +203,10 @@ class Place extends React.Component {
                                     rate : {hotel.hotelRate}
                                 </Card.Text>
                             </Card.Body>
-                            
-                            <Button onClick = {()=>this.deleteHotel(hotelIndex)} variant="danger" >Delete</Button>
-                            <Button onClick = {()=>this.updateHotel(hotelIndex)} variant="warning" >Update</Button>
+
+                            <Button onClick={() => this.deleteHotel(hotelIndex)} variant="danger" >Delete</Button>
+                            <Button onClick={() => this.updateHotel(hotelIndex)} variant="warning" >Update</Button>
+                            <Button onClick={() => this.bookNow(hotel.hotelName, hotelIndex)} variant="primary">Book Now</Button>
                         </Card>
                     )
                 })}
@@ -157,4 +219,4 @@ class Place extends React.Component {
     }
 }
 
-export default Place
+export default withAuth0(Place);
