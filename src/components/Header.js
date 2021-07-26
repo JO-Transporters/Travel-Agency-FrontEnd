@@ -25,6 +25,9 @@ class Header extends React.Component {
                 <Link to="/" onClick={this.props.hidePlace}>Home</Link>
 
                 <Link to="/profile">Profile</Link>
+                <Link to="/mybooks">My Books</Link>
+
+
 
                 {/* TODO: if the user is logged in, render the `LogoutButton` - if the user is logged out, render the `LoginButton` */}
                 {isAuthenticated ? <LogoutButton /> : <LoginButton />}

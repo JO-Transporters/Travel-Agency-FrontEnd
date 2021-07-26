@@ -11,6 +11,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import MyBooks from './components/MyBooks';
 import HomeSlides from './components/HomeSlides';
 
 
@@ -49,7 +50,6 @@ class App extends React.Component {
         <Router>
           <Header hidePlace={this.hidePlace}/>
 
-
           <Switch>
 
             <Route exact path="/">
@@ -58,6 +58,10 @@ class App extends React.Component {
 
             <Route exact path="/profile">
               <Profile />
+            </Route>
+
+            <Route exact path="/mybooks">
+              <MyBooks/>
             </Route>
 
           </Switch>

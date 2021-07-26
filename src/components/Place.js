@@ -151,7 +151,8 @@ class Place extends React.Component {
             userEmail : user.email
 
         }
-        await axios.post(`http://localhost:3001/addnewbook`, bookedObj);
+
+     let userBookInfo =   await axios.post(`http://localhost:3001/addnewbook`, bookedObj);
 
         await this.setState({
             showBookModal: false
