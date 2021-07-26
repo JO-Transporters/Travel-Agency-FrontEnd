@@ -11,6 +11,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import HomeSlides from './components/HomeSlides';
 
 
 class App extends React.Component {
