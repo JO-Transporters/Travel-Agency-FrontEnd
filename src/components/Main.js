@@ -5,6 +5,7 @@ import { withAuth0 } from '@auth0/auth0-react';
 import AddPlaceModal from './buttons/AddPlaceModal';
 import UpdateForm from './buttons/UpdateForm';
 import './Main.css'
+import HomeSlides from './HomeSlides';
 
 class Main extends React.Component {
 
@@ -122,7 +123,7 @@ class Main extends React.Component {
         const { user, isAuthenticated } = this.props.auth0;
         return (
             <>
-
+<HomeSlides/>
                 {/* {this.state.adminAccess &&
                     <Button variant="danger" >Delete</Button>
 
