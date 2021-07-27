@@ -22,6 +22,7 @@ class Place extends React.Component {
             hotelObj: {},
             showBookModal: false,
             hotelName: "",
+            price:"",
             bookedData: [],
             alert: false,
 
@@ -39,11 +40,12 @@ class Place extends React.Component {
 
     }
 
-    bookNow = async (hotelName) => {
+    bookNow = async (hotelName,index,price) => {
 
 
         await this.setState({
             hotelName: hotelName,
+            price:price,
             showBookModal: true,
             alert: true,
 
@@ -69,6 +71,8 @@ class Place extends React.Component {
             hotelRate: event.target.rate.value,
             location: event.target.location.value,
             hotelimg: event.target.img.value,
+            price:event.target.price.value
+
         }
 
         let hotelData = await axios.post(`http://localhost:3001/addHotel/${this.props.index}`, hotelObj);
@@ -120,6 +124,7 @@ class Place extends React.Component {
             hotelimg: event.target.img.value,
             hotelRate: event.target.rate.value,
             location: event.target.location.value,
+            price:event.target.price.value,
 
         }
 
@@ -141,6 +146,7 @@ class Place extends React.Component {
         let bookedObj = {
 
             hotelName: this.state.hotelName,
+            price: this.state.price,
             checkInDate: event.target.checkInDate.value,
             checkOutDate: event.target.checkOutDate.value,
             visitorsNum: event.target.visitorsNum.value,
@@ -151,7 +157,7 @@ class Place extends React.Component {
             userEmail : user.email
 
         }
-
+        
      let userBookInfo =   await axios.post(`http://localhost:3001/addnewbook`, bookedObj);
 
         await this.setState({
@@ -165,7 +171,8 @@ class Place extends React.Component {
         return (
 
             <div>
-
+ <img style={{ boxShadow: '2px 2px 2px #ccc' }} variant="top" src={`https://maps.locationiq.com/v3/staticmap?key=pk.3fb65df48ea9b1418d02d4dc6b9a89f1&center=32.551445,35.851479&zoom=15`} alt="irbid" />
+      
 
                 <Button onClick={this.addHotel} variant="primary">Add Hotel</Button>
 
@@ -203,11 +210,14 @@ class Place extends React.Component {
                                 <Card.Text>
                                     rate : {hotel.hotelRate}
                                 </Card.Text>
+                                <Card.Text>
+                                    price : {`${hotel.price} JOD`}
+                                </Card.Text>
                             </Card.Body>
 
                             <Button onClick={() => this.deleteHotel(hotelIndex)} variant="danger" >Delete</Button>
                             <Button onClick={() => this.updateHotel(hotelIndex)} variant="warning" >Update</Button>
-                            <Button onClick={() => this.bookNow(hotel.hotelName, hotelIndex)} variant="primary">Book Now</Button>
+                            <Button onClick={() => this.bookNow(hotel.hotelName, hotelIndex,hotel.price)} variant="primary">Book Now</Button>
                         </Card>
                     )
                 })}

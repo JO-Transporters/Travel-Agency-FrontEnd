@@ -64,7 +64,7 @@ class MyBooks extends React.Component {
 
     updateBook = async (index) =>{
       
-        const { hotelName, kidsNum, roomsNum, visitorsNum,checkInDate,checkOutDate } = this.state.myHotels[index];
+        const { hotelName, kidsNum, roomsNum, visitorsNum,checkInDate,checkOutDate ,price} = this.state.myHotels[index];
 
         await this.setState({
             index : index,
@@ -76,6 +76,7 @@ class MyBooks extends React.Component {
                 visitorsNum : visitorsNum,
                 checkInDate : checkInDate,
                 checkOutDate : checkOutDate,
+                price: price,
             }
         })
     }
@@ -91,6 +92,7 @@ class MyBooks extends React.Component {
 
         let updated = {
             hotelName : this.state.myHotels[this.state.index].hotelName,
+            price:this.state.myHotels[this.state.index].price,
             kidsNum : event.target.kids.value,
             roomsNum : event.target.room.value,
             visitorsNum : event.target.visit.value,
@@ -127,6 +129,7 @@ class MyBooks extends React.Component {
                             <th>Visitor Number</th>
                             <th>CheckIn Date</th>
                             <th>CheckOut Date</th>
+                            <th>total price</th>
 
 
                         </tr>
@@ -143,6 +146,7 @@ class MyBooks extends React.Component {
                                     <td>{hotel.visitorsNum}</td>
                                     <td>{hotel.checkInDate}</td>
                                     <td>{hotel.checkOutDate}</td>
+                                    <td>{`${Number(hotel.price)*Number(hotel.roomsNum)} JOD`}</td>
                                 </tr>
 
                             )
