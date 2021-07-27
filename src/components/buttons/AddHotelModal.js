@@ -37,7 +37,7 @@ class AddHotelModal extends React.Component {
                                 <Form.Label>Hotel Location</Form.Label>
                                 <Form.Control type="text" placeholder="Enter Hotel Location" name="location" />
                             </Form.Group>
-
+                           
                             <Modal.Footer>
                                 <Button variant="secondary" onClick={this.props.handleClose}>
                                     Close
