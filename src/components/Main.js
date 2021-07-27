@@ -139,13 +139,13 @@ class Main extends React.Component {
                 <div className="cardContainer">
                     {this.state.placesArray.map((place, index) => {
                         return (
-                            <Card className="place" style={{ width: '18rem', backgroundColor: 'lightgrey', boxShadow: '2px 2px 2px black' }} >
+                            <Card className="place" style={{ width: '18rem', backgroundColor: '#B1D4E0', boxShadow: '2px 2px 2px black' }} id="homeCard">
 
                                 <Card.Body>
-                                    <Card.Title>{place.name}</Card.Title>
+                                    <Card.Title id="homeCardTitle">{place.name}</Card.Title>
                                     <Card.Img style={{
                                         boxShadow: '2px 2px 2px #ccc',
-                                        width: '200px', height: '200px'
+                                        width: '250px', height: '200px'
                                     }}
                                         variant="top" src={place.img} alt={place.name}
                                         onClick={() => this.props.selectedPlace(place, index)} />
