@@ -185,6 +185,7 @@ class Place extends React.Component {
                 <h2>{this.props.place.name}</h2>
 
 
+
                 {this.state.hotelsArray.map((hotel, hotelIndex) => {
                     return (
                         <Card className="place" style={{ width: '18rem', backgroundColor: 'lightgrey', boxShadow: '2px 2px 2px black' }} >
