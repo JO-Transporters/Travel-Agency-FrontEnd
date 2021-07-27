@@ -4,8 +4,10 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
+import { Card, Button } from 'react-bootstrap/';
+
 import Place from './components/Place';
-import Login from './components/Login';
+import './App.css'
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,39 +23,45 @@ class App extends React.Component {
     super(props)
     this.state = {
       showPlace: false,
-      place : {},
-      index : 0,
+      place: {},
+      index: 0,
     }
   }
 
 
-  selectedPlace = async (place , index) => {
-     await this.setState({
-      showPlace : true,
-      place : place,
-      index : index,
+  selectedPlace = async (place, index) => {
+    await this.setState({
+      showPlace: true,
+      place: place,
+      index: index,
 
-     })
+    })
   }
 
-  hidePlace = async () =>{
+  hidePlace = async () => {
     await this.setState({
-      showPlace : false,
-      place : {}
-     })
+      showPlace: false,
+      place: {}
+    })
   }
   render() {
     const { user, isAuthenticated } = this.props.auth0;
+    let star =[];
+  {for (let index = 0; index < 5; index++) {
+    
+    star.push('⭐')
+  }}
 
     return (
       <div>
         <Router>
-          <Header hidePlace={this.hidePlace}/>
+          <Header hidePlace={this.hidePlace} />
+        
 
           <Switch>
 
             <Route exact path="/">
-              {this.state.showPlace ? <Place place={this.state.place} index = {this.state.index}/> : <Main selectedPlace={this.selectedPlace} />}
+              {this.state.showPlace ? <Place place={this.state.place} index={this.state.index} /> : <Main selectedPlace={this.selectedPlace} />}
             </Route>
 
             <Route exact path="/profile">
@@ -61,7 +69,7 @@ class App extends React.Component {
             </Route>
 
             <Route exact path="/mybooks">
-              <MyBooks/>
+              <MyBooks />
             </Route>
 
           </Switch>

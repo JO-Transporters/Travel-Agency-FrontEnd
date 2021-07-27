@@ -28,16 +28,23 @@ class AddPlaceModal extends React.Component {
                                 <Form.Control type="text" placeholder="Enter Place Image Link" name="img" />
                             </Form.Group>
                             <Form.Group className="mb-3" >
-                                <Form.Label>first Image</Form.Label>
+                                <Form.Label>First Image</Form.Label>
                                 <Form.Control type="text" placeholder="Enter Hotel Image Link" name="img1" />
                             </Form.Group>
                             <Form.Group className="mb-3" >
-                                <Form.Label>second Image</Form.Label>
+                                <Form.Label>Second Image</Form.Label>
                                 <Form.Control type="text" placeholder="Enter Hotel Image Link" name="img2" />
                             </Form.Group>
                             <Form.Group className="mb-3" >
-                                <Form.Label>thired Image</Form.Label>
+                                <Form.Label>Thired Image</Form.Label>
                                 <Form.Control type="text" placeholder="Enter Hotel Image Link" name="img3" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" >
+                                <Form.Label>Longitude</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Place Longitude" name="lon" />
+                            </Form.Group>  <Form.Group className="mb-3" >
+                                <Form.Label>Latitude</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Place Latitude" name="lat" />
                             </Form.Group>
 
                             <Modal.Footer>

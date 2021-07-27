@@ -27,28 +27,27 @@ class Main extends React.Component {
 
     componentDidMount = async () => {
 
+        const { user, isAuthenticated } = this.props.auth0;
+
+        let adminAuth;
+
+        if (isAuthenticated) {
+            if (user.email == 'ibrahimkuderat@gmail.com') {
+                adminAuth = true;
+
+            }
+        }
         let placesData = await axios.get('http://localhost:3001/places')
 
-        await this.setState({
+       this.setState({
+
             placesArray: placesData.data,
+            adminAccess: true,
         })
 
 
+
     }
-
-
-    // showAdminAccess =()=>{
-    //     const { user, isAuthenticated } = this.props.auth0;
-    //     if (isAuthenticated){
-    //         if (user.email == 'ibrahimkuderat@gmail.com') {
-    //             this.setState({
-    //                 adminAccess: true
-    //             })
-    //         }
-
-    //     }
-
-    // }
 
     addPlace = async () => {
         await this.setState({
@@ -70,11 +69,13 @@ class Main extends React.Component {
         })
         let slideshow = [event.target.img1.value, event.target.img2.value, event.target.img3.value]
 
+        let locCenter = [event.target.lat.value , event.target.lon.value]
 
         let placeObj = {
             name: event.target.name.value,
             img: event.target.img.value,
             slideShowimg: slideshow,
+            center : locCenter
 
         }
         console.log(placeObj);
@@ -98,13 +99,16 @@ class Main extends React.Component {
         let updatedObj = {
             name: this.state.placesArray[index].name,
             img: this.state.placesArray[index].img,
-            slideShow1:this.state.placesArray[index].slideShow[0],
-            slideShow2:this.state.placesArray[index].slideShow[1],
-            slideShow3:this.state.placesArray[index].slideShow[2]
+            slideShow1: this.state.placesArray[index].slideShow[0],
+            slideShow2: this.state.placesArray[index].slideShow[1],
+            slideShow3: this.state.placesArray[index].slideShow[2],
+            lat : this.state.placesArray[index].center[0],
+            lon : this.state.placesArray[index].center[1],
+
 
 
         }
-console.log(updatedObj);
+        console.log(updatedObj);
         await this.setState({
             showUpdate: true,
             index: index,
@@ -115,13 +119,17 @@ console.log(updatedObj);
     updatePlace = async (event) => {
         event.preventDefault();
         let slideshow = [event.target.img1.value, event.target.img2.value, event.target.img3.value]
-
+        let locCenter = [event.target.lat.value , event.target.lon.value ]
         let updateInfo = {
             name: event.target.name.value,
             img: event.target.img.value,
             slideShowimg: slideshow,
-            hotels:this.state.placesArray[this.state.index].hotels
+            hotels: this.state.placesArray[this.state.index].hotels,
+            center:locCenter,
+
+
         }
+        
 
         let placeData = await axios.put(`http://localhost:3001/update/${this.state.index}`, updateInfo)
 
@@ -136,12 +144,14 @@ console.log(updatedObj);
         return (
             <>
                 <HomeSlides />
-                {/* {this.state.adminAccess &&
-                    <Button variant="danger" >Delete</Button>
+                {
+                    this.state.adminAccess &&
+                    <Button onClick={this.addPlace} variant="primary">Add Place</Button>
 
-                } */}
 
-                <Button onClick={this.addPlace} variant="primary">Add Place</Button>
+                }
+
+
 
                 <AddPlaceModal show={this.state.addPlace} handleClose={this.handleClose} handleSubmit={this.handleSubmit} />
 
@@ -162,9 +172,13 @@ console.log(updatedObj);
                                         variant="top" src={place.img} alt={place.name}
                                         onClick={() => this.props.selectedPlace(place, index)} />
                                 </Card.Body>
-
-                                <Button variant="danger" onClick={() => { this.deletePlace(index) }}>Delete</Button>
-                                <Button variant="warning" onClick={() => { this.updateFormShow(index) }} >Update</Button>
+                                {
+                                    this.state.adminAccess &&
+                                    <Card.Footer>
+                                    <Button variant="danger" onClick={() => { this.deletePlace(index) }}>Delete</Button>
+                                    <Button variant="warning" onClick={() => { this.updateFormShow(index) }} >Update</Button>
+                                    </Card.Footer>
+                                }
                             </Card>
                         )
                     })}
