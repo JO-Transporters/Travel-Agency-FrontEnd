@@ -68,12 +68,16 @@ class Main extends React.Component {
         await this.setState({
             addPlace: false
         })
+        let slideshow = [event.target.img1.value, event.target.img2.value, event.target.img3.value]
+
 
         let placeObj = {
             name: event.target.name.value,
             img: event.target.img.value,
-        }
+            slideShowimg: slideshow,
 
+        }
+        console.log(placeObj);
         let placeData = await axios.post('http://localhost:3001/add', placeObj)
 
         await this.setState({
@@ -93,9 +97,14 @@ class Main extends React.Component {
     updateFormShow = async (index) => {
         let updatedObj = {
             name: this.state.placesArray[index].name,
-            img: this.state.placesArray[index].img
-        }
+            img: this.state.placesArray[index].img,
+            slideShow1:this.state.placesArray[index].slideShow[0],
+            slideShow2:this.state.placesArray[index].slideShow[1],
+            slideShow3:this.state.placesArray[index].slideShow[2]
 
+
+        }
+console.log(updatedObj);
         await this.setState({
             showUpdate: true,
             index: index,
@@ -105,10 +114,13 @@ class Main extends React.Component {
 
     updatePlace = async (event) => {
         event.preventDefault();
+        let slideshow = [event.target.img1.value, event.target.img2.value, event.target.img3.value]
 
         let updateInfo = {
             name: event.target.name.value,
-            img: event.target.img.value
+            img: event.target.img.value,
+            slideShowimg: slideshow,
+            hotels:this.state.placesArray[this.state.index].hotels
         }
 
         let placeData = await axios.put(`http://localhost:3001/update/${this.state.index}`, updateInfo)

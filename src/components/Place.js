@@ -7,6 +7,7 @@ import AddBookModal from './buttons/AddBookModal';
 import { withAuth0 } from '@auth0/auth0-react';
 import LoginButton from './buttons/LoginButton';
 import LoginAlert from './LoginAlert';
+import PlaceSlides from './PlaceSlides';
 
 
 
@@ -65,7 +66,6 @@ class Place extends React.Component {
     }
     handleForm = async (event) => {
         event.preventDefault();
-
         let hotelObj = {
             hotelName: event.target.name.value,
             hotelRate: event.target.rate.value,
@@ -153,8 +153,8 @@ class Place extends React.Component {
             roomsNum: event.target.roomsNum.value,
             kidsNum: event.target.kidsNum.value,
             phoneNumber: event.target.phoneNumber.value,
-            userName : user.name,
-            userEmail : user.email
+            userName: user.name,
+            userEmail: user.email
 
         }
         
@@ -167,12 +167,14 @@ class Place extends React.Component {
     }
 
     render() {
+        console.log(this.props.place);
         const { user, isAuthenticated } = this.props.auth0;
         return (
 
             <div>
  <img style={{ boxShadow: '2px 2px 2px #ccc' }} variant="top" src={`https://maps.locationiq.com/v3/staticmap?key=pk.3fb65df48ea9b1418d02d4dc6b9a89f1&center=32.551445,35.851479&zoom=15`} alt="irbid" />
       
+                <PlaceSlides slideshowimg={this.props.place.slideShow} />
 
                 <Button onClick={this.addHotel} variant="primary">Add Hotel</Button>
 
@@ -186,7 +188,7 @@ class Place extends React.Component {
                     handleUpdate={this.handleUpdate} />
 
 
-                {this.state.alert && <>{isAuthenticated ? <AddBookModal show={this.state.showBookModal} handleClose={this.handleClose} hotelName={this.state.hotelName} handleForm={this.handelBookForm}/> : <LoginAlert setShow={this.setShow} />}</>}
+                {this.state.alert && <>{isAuthenticated ? <AddBookModal show={this.state.showBookModal} handleClose={this.handleClose} hotelName={this.state.hotelName} handleForm={this.handelBookForm} /> : <LoginAlert setShow={this.setShow} />}</>}
 
 
                 <h2>{this.props.place.name}</h2>
