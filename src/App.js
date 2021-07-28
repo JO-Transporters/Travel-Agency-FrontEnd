@@ -15,6 +15,7 @@ import {
 } from "react-router-dom";
 import MyBooks from './components/MyBooks';
 import HomeSlides from './components/HomeSlides';
+import './App.css';
 
 
 class App extends React.Component {
