@@ -36,7 +36,7 @@ class AddPlaceModal extends React.Component {
                                 <Form.Control type="text" placeholder="Enter Hotel Image Link" name="img2" />
                             </Form.Group>
                             <Form.Group className="mb-3" >
-                                <Form.Label>Thired Image</Form.Label>
+                                <Form.Label>Third Image</Form.Label>
                                 <Form.Control type="text" placeholder="Enter Hotel Image Link" name="img3" />
                             </Form.Group>
                             <Form.Group className="mb-3" >

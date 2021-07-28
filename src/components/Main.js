@@ -189,9 +189,10 @@ class Main extends React.Component {
                 <AddPlaceModal show={this.state.addPlace} handleClose={this.handleClose} handleSubmit={this.handleSubmit} />
 
                 <UpdateForm show={this.state.showUpdate} handleClose={this.handleClose} updatedObj={this.state.updatedObj} updatePlace={this.updatePlace} />
-
+                <h1 style={{ color:'#05445E'}}>Our Tourist Destination</h1>
 
                 <div className="cardContainer">
+                    
                     {this.state.placesArray.map((place, index) => {
                         return (
                             <Card className="place" style={{ width: '18rem', backgroundColor: '#B1D4E0', boxShadow: '2px 2px 2px black' }} id="homeCard">
@@ -200,16 +201,16 @@ class Main extends React.Component {
                                     <Card.Title id="homeCardTitle">{place.name}</Card.Title>
                                     <Card.Img style={{
                                         boxShadow: '2px 2px 2px #ccc',
-                                        width: '250px', height: '200px'
+                                        width: '250px', height: '200px',borderRadius:"15px"
                                     }}
                                         variant="top" src={place.img} alt={place.name}
                                         onClick={() => this.props.selectedPlace(place, index)} />
                                 </Card.Body>
                                 {
                                     this.state.adminAccess &&
-                                    <Card.Footer>
-                                        <Button variant="danger" onClick={() => { this.deletePlace(index) }}>Delete</Button>
-                                        <Button variant="warning" onClick={() => { this.updateFormShow(index) }} >Update</Button>
+                                    <Card.Footer className = 'update'>
+                                        <Button variant="danger"  onClick={() => { this.deletePlace(index) }}>Delete</Button>
+                                        <Button  style={{  backgroundColor: '#05445E', color:'#D4F1F4' }} onClick={() => { this.updateFormShow(index) }} >Update</Button>
                                     </Card.Footer>
                                 }
                             </Card>
