@@ -6,6 +6,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from "react-router-dom";
 import logo from './image/logo.jpg'
 import { withAuth0 } from '@auth0/auth0-react';
+import logo2 from './image/logos.jpeg'
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -23,7 +25,7 @@ class Header extends React.Component {
         return (
             <Navbar collapseOnSelect expand="lg"  id="nav">
                 <Link to="/" className="title" onClick={this.props.hidePlace}><Navbar.Brand id = 'title' > <div id="logodivH">
-                    <img id="logoH" src={logo} />
+                    <img id="logoH" src={logo2} />
                 </div></Navbar.Brand></Link>
 
                 <Link to="/" onClick={this.props.hidePlace} className="pages">Home</Link>

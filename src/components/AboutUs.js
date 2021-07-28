@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Col, Row } from 'react-bootstrap/';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './AboutUs.css';
+import hema from './img/hema.jpg'
 
 
 
@@ -45,6 +46,8 @@ class AboutUs extends React.Component {
             </div>
           </a>
         </li>
+
+
         <li>
           <a class="card" >
             <img src="https://ca.slack-edge.com/TNGRRLUMA-U01TUDCH1D3-5453bbbf29fc-512" class="card__image" alt="" />
@@ -54,7 +57,7 @@ class AboutUs extends React.Component {
                 <img class="card__thumb" src="https://ca.slack-edge.com/TNGRRLUMA-U01TUDCH1D3-5453bbbf29fc-512" alt="" />
                 <div class="card__header-text">
                   <h3 class="card__title">Rafeef Alhayek</h3>
-                  <span class="card__status">English Language and Literature</span>
+                  <span class="card__status">English Language</span>
                 </div>
               </div>
               <p class="card__description">
@@ -74,6 +77,8 @@ class AboutUs extends React.Component {
             </div>
           </a>
         </li>
+
+
         <li>
           <a class="card" >
             <img src="https://ca.slack-edge.com/TNGRRLUMA-U01TXQYRAPM-d6ba75ea02a0-512" class="card__image" alt="" />
@@ -82,9 +87,9 @@ class AboutUs extends React.Component {
                 <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
                 <img class="card__thumb" src="https://ca.slack-edge.com/TNGRRLUMA-U01TXQYRAPM-d6ba75ea02a0-512" alt="" />
                 <div class="card__header-text">
-                  <h3 class="card__title">Mariam Saber Alshammari</h3>
+                  <h3 class="card__title">Mariam Alshammari</h3>
                   {/* <span class="card__tagline">Computer Information Systems</span>             */}
-                  <span class="card__status">Computer Information Systems</span>
+                  <span class="card__status">CIS</span>
                 </div>
               </div>
               <p class="card__description">
@@ -104,6 +109,10 @@ class AboutUs extends React.Component {
             </div>
           </a>
         </li>
+       
+
+
+
         <li>
           <a class="card" >
             <img src="https://ca.slack-edge.com/TNGRRLUMA-U01TGNASKRV-30688543cb75-512" class="card__image" alt="" />
@@ -132,16 +141,18 @@ class AboutUs extends React.Component {
             </div>
           </a>
         </li>
+
+        {/* <div className = 'males'> */}
         <li>
           <a class="card" >
-            <img src="https://ca.slack-edge.com/TNGRRLUMA-U01TQN6SQHL-715676c120e7-512" class="card__image" alt="" />
+            <img src={hema} class="card__image" alt="" />
             <div class="card__overlay">
               <div class="card__header">
                 <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
                 <img class="card__thumb" src="https://ca.slack-edge.com/TNGRRLUMA-U01TQN6SQHL-715676c120e7-512" alt="" />
                 <div class="card__header-text">
                   <h3 class="card__title">Ibrahim Khdairat</h3>
-                  <span class="card__status">Power Electrical Engineering</span>
+                  <span class="card__status">Electrical Engineering</span>
                 </div>
               </div>
               <p class="card__description">
@@ -189,6 +200,10 @@ class AboutUs extends React.Component {
             </div>
           </a>
         </li>
+
+
+       
+        {/* </div> */}
       </ul>
 
 </>

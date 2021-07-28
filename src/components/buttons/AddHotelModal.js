@@ -12,7 +12,7 @@ class AddHotelModal extends React.Component {
             <div>
                 <Modal show={this.props.show} onHide={this.props.handleClose} >
                     <Modal.Header closeButton>
-                        <Modal.Title>Adding Place</Modal.Title>
+                        <Modal.Title>Adding Hotel</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>

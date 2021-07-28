@@ -44,13 +44,37 @@ class Place extends React.Component {
             }
         }
 
-        let placesData = await axios.get('http://localhost:3001/places')
+        let userOnLS = JSON.parse(localStorage.getItem("Hotels"));
 
-        this.setState({
-            hotelsArray: placesData.data[this.props.index].hotels,
-            adminAccess: adminAuth,
+        if (userOnLS !== undefined && userOnLS !== null) {
+            this.setState({
+                hotelsArray: userOnLS[this.props.index].hotels,
+                adminAccess: adminAuth,
 
-        })
+            })
+
+        }
+        else {
+            let placesData = await axios.get('http://localhost:3001/places')
+            let data = JSON.stringify(placesData.data);
+            localStorage.setItem("Hotels", data);
+            this.setState({
+                hotelsArray: placesData.data[this.props.index].hotels,
+                adminAccess: adminAuth,
+
+            })
+
+        }
+
+
+
+        // let placesData = await axios.get('http://localhost:3001/places')
+
+        // this.setState({
+        //     hotelsArray: placesData.data[this.props.index].hotels,
+        //     adminAccess: adminAuth,
+
+        // })
 
 
     }
@@ -88,17 +112,21 @@ class Place extends React.Component {
             price: event.target.price.value
 
         }
-
+        this.setState({
+            showAddHotel: false,
+        })
         let hotelData = await axios.post(`http://localhost:3001/addHotel/${this.props.index}`, hotelObj);
+
+        localStorage.removeItem("Hotels");
+        let data = JSON.stringify(hotelData.data);
+        localStorage.setItem("Hotels", data);
 
         this.setState({
             hotelsArray: hotelData.data[this.props.index].hotels,
         })
 
 
-        this.setState({
-            showAddHotel: false,
-        })
+
     }
 
     handleClose = async () => {
@@ -114,7 +142,9 @@ class Place extends React.Component {
     deleteHotel = async (hotelIndex) => {
 
         let hotelData = await axios.delete(`http://localhost:3001/deletehotel/${this.props.index}/${hotelIndex}`)
-
+        localStorage.removeItem("Hotels");
+        let data = JSON.stringify(hotelData.data);
+        localStorage.setItem("Hotels", data);
         this.setState({
             hotelsArray: hotelData.data[this.props.index].hotels,
 
@@ -141,15 +171,20 @@ class Place extends React.Component {
             price: event.target.price.value,
 
         }
-
+        this.setState({
+            showHotelUpdate: false,
+        })
         let hotelData = await axios.put(`http://localhost:3001/updatehotel/${this.props.index}/${this.state.hotelIndex}`, updatedHotelObj)
 
-
+        localStorage.removeItem("Hotels");
+        let data = JSON.stringify(hotelData.data);
+        localStorage.setItem("Hotels", data);
 
         this.setState({
+
             hotelsArray: hotelData.data[this.props.index].hotels,
 
-            showHotelUpdate: false,
+
         })
     }
 
@@ -212,7 +247,7 @@ class Place extends React.Component {
                 {this.state.alert && <>{isAuthenticated ? <AddBookModal show={this.state.showBookModal} handleClose={this.handleClose} hotelName={this.state.hotelName} handleForm={this.handelBookForm} /> : <LoginAlert setShow={this.setShow} />}</>}
 
 
-                <h2 style={{  backgroundColor: '#05445E', color:'#D4F1F4',textAlign:'center'}}>{this.props.place.name}</h2>
+                <h2 style={{ backgroundColor: '#05445E', color: '#D4F1F4', textAlign: 'center' }}>{this.props.place.name}</h2>
 
 
                 <div className='cardcontainer'>
@@ -296,7 +331,7 @@ class Place extends React.Component {
                                 <Button className='booknow' onClick={() => this.bookNow(hotel.hotelName, hotelIndex, hotel.price)} variant="primary">Book Now</Button>
                                 {this.state.adminAccess &&
                                     <Card.Footer className='adminbutton'>
-                                        <Button onClick={() => this.updateHotel(hotelIndex)} variant="warning">Update</Button>
+                                        <Button onClick={() => this.updateHotel(hotelIndex)} style={{  backgroundColor: '#05445E', color:'#D4F1F4' }}>Update</Button>
                                         <Button onClick={() => this.deleteHotel(hotelIndex)} variant="danger">Delete</Button>
                                     </Card.Footer>
                                 }

@@ -5,7 +5,7 @@
     
   }
   #nav button {
-    width: 150px;
+    width: 220px;
   }
   
   
@@ -24,10 +24,10 @@
   .pages {
     padding-right: 10px;
     text-decoration: none;
-    width: 200px;
+    width: 390px;
     color:#ccf4f8 ;
     font-family: 'Abril Fatface', cursive;
-    font-size: 20px;
+    font-size: 30px;
   }
   
   #aboutus {
@@ -37,7 +37,7 @@
     float: left;
     width: 1px;
     background-color:#05445E;
-    margin-top: 10px;
+    margin-top: 3px;
     margin-right: 10px;
   }
   #logoH{
