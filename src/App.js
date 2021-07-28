@@ -5,6 +5,7 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
 import { Card, Button } from 'react-bootstrap/';
+import AboutUs from './components/AboutUs';
 
 import Place from './components/Place';
 import './App.css'
@@ -70,6 +71,10 @@ class App extends React.Component {
 
             <Route exact path="/mybooks">
               <MyBooks />
+            </Route>
+
+            <Route exact path="/aboutUs">
+              <AboutUs />
             </Route>
 
           </Switch>
