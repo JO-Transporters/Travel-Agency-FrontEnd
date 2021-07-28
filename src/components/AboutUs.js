@@ -10,8 +10,11 @@ import './AboutUs.css';
 class AboutUs extends React.Component {
   render() {
     return (
-
-
+<>
+<div class="about-section">
+      <h1>Jo-Transporter Team</h1>
+      <p  >An ambitious youth team  seeks to benefit the community within the software development program by participating in an       intensive software devlopment course offered by abdulaziz ghurair's department of computing (ASAC) at luminus university technical     collage(LTUC) accredited by the US code fellows academy in seattle.</p>
+     </div>
       <ul class="cards">
         <li>
           <a class="card" >
@@ -188,7 +191,7 @@ class AboutUs extends React.Component {
         </li>
       </ul>
 
-
+</>
     )
   }
 }

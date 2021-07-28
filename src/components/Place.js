@@ -212,7 +212,7 @@ class Place extends React.Component {
                 {this.state.alert && <>{isAuthenticated ? <AddBookModal show={this.state.showBookModal} handleClose={this.handleClose} hotelName={this.state.hotelName} handleForm={this.handelBookForm} /> : <LoginAlert setShow={this.setShow} />}</>}
 
 
-                <h2>{this.props.place.name}</h2>
+                <h2 style={{  backgroundColor: '#05445E', color:'#D4F1F4',textAlign:'center'}}>{this.props.place.name}</h2>
 
 
                 <div className='cardcontainer'>

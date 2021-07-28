@@ -156,9 +156,10 @@ class Main extends React.Component {
                 <AddPlaceModal show={this.state.addPlace} handleClose={this.handleClose} handleSubmit={this.handleSubmit} />
 
                 <UpdateForm show={this.state.showUpdate} handleClose={this.handleClose} updatedObj={this.state.updatedObj} updatePlace={this.updatePlace} />
-
+                <h1 style={{ color:'#05445E'}}>Our Tourist Destination</h1>
 
                 <div className="cardContainer">
+                    
                     {this.state.placesArray.map((place, index) => {
                         return (
                             <Card className="place" style={{ width: '18rem', backgroundColor: '#B1D4E0', boxShadow: '2px 2px 2px black' }} id="homeCard">

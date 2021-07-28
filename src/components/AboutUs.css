@@ -8,7 +8,7 @@
   }
   
   body {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Abril Fatface', cursive;
     background-color: #fef8f8;
   }
   
@@ -97,7 +97,7 @@
   .card__tagline {
     display: block;
     margin: 1em 0;
-    font-family: "MockFlowFont";  
+    font-family: 'Abril Fatface', cursive; 
     font-size: .8em; 
     color: #D7BDCA;  
   }
@@ -111,9 +111,13 @@
     padding: 0 2em 2em;
     margin: 0;
     color: #D7BDCA;
-    font-family: "MockFlowFont";   
+    font-family: 'Abril Fatface', cursive;;   
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
-  }    
+  }  
+  .about-section{
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+  }  

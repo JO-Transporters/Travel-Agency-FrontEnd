@@ -61,9 +61,9 @@ right: 5%;
   
   .bodyStyle{
     position: relative;
-  width: 250px;
+  width: 350px;
    margin-Left: 200px;
-   margin-Top: -230px;
+   /* margin-Top: -230px; */
   }
   
   
