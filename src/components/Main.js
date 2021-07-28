@@ -55,7 +55,8 @@ class Main extends React.Component {
         else {
             console.log('new');
 
-            let placesData = await axios.get('http://localhost:3001/places')
+            let placesData = await axios.get('https://jordan-black-iris.herokuapp.com/places')
+            console.log(placesData.data);
             let data = JSON.stringify(placesData.data);
             localStorage.setItem("Places", data);
             this.setState({
@@ -106,7 +107,7 @@ class Main extends React.Component {
 
         }
         console.log(placeObj);
-        let placeData = await axios.post('http://localhost:3001/add', placeObj)
+        let placeData = await axios.post('https://jordan-black-iris.herokuapp.com/add', placeObj)
         localStorage.removeItem("Place");
         let data = JSON.stringify(placeData.data);
         localStorage.setItem("Places", data);
@@ -117,7 +118,7 @@ class Main extends React.Component {
 
     deletePlace = async (index) => {
 
-        let placeData = await axios.delete(`http://localhost:3001/delete/${index}`)
+        let placeData = await axios.delete(`https://jordan-black-iris.herokuapp.com/delete/${index}`)
         localStorage.removeItem("Place");
         let data = JSON.stringify(placeData.data);
         localStorage.setItem("Places", data);
@@ -162,7 +163,7 @@ class Main extends React.Component {
         }
 
 
-        let placeData = await axios.put(`http://localhost:3001/update/${this.state.index}`, updateInfo)
+        let placeData = await axios.put(`https://jordan-black-iris.herokuapp.com/update/${this.state.index}`, updateInfo)
         localStorage.removeItem("Place");
         let data = JSON.stringify(placeData.data);
         localStorage.setItem("Places", data);

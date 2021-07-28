@@ -55,7 +55,7 @@ class Place extends React.Component {
 
         }
         else {
-            let placesData = await axios.get('http://localhost:3001/places')
+            let placesData = await axios.get('https://jordan-black-iris.herokuapp.com/places')
             let data = JSON.stringify(placesData.data);
             localStorage.setItem("Hotels", data);
             this.setState({
@@ -115,7 +115,7 @@ class Place extends React.Component {
         this.setState({
             showAddHotel: false,
         })
-        let hotelData = await axios.post(`http://localhost:3001/addHotel/${this.props.index}`, hotelObj);
+        let hotelData = await axios.post(`https://jordan-black-iris.herokuapp.com/addHotel/${this.props.index}`, hotelObj);
 
         localStorage.removeItem("Hotels");
         let data = JSON.stringify(hotelData.data);
@@ -141,7 +141,7 @@ class Place extends React.Component {
 
     deleteHotel = async (hotelIndex) => {
 
-        let hotelData = await axios.delete(`http://localhost:3001/deletehotel/${this.props.index}/${hotelIndex}`)
+        let hotelData = await axios.delete(`https://jordan-black-iris.herokuapp.com/deletehotel/${this.props.index}/${hotelIndex}`)
         localStorage.removeItem("Hotels");
         let data = JSON.stringify(hotelData.data);
         localStorage.setItem("Hotels", data);
@@ -174,7 +174,7 @@ class Place extends React.Component {
         this.setState({
             showHotelUpdate: false,
         })
-        let hotelData = await axios.put(`http://localhost:3001/updatehotel/${this.props.index}/${this.state.hotelIndex}`, updatedHotelObj)
+        let hotelData = await axios.put(`https://jordan-black-iris.herokuapp.com/updatehotel/${this.props.index}/${this.state.hotelIndex}`, updatedHotelObj)
 
         localStorage.removeItem("Hotels");
         let data = JSON.stringify(hotelData.data);
@@ -207,7 +207,7 @@ class Place extends React.Component {
 
         }
 
-        let userBookInfo = await axios.post(`http://localhost:3001/addnewbook`, bookedObj);
+        let userBookInfo = await axios.post(`https://jordan-black-iris.herokuapp.com/addnewbook`, bookedObj);
 
         this.setState({
             showBookModal: false
