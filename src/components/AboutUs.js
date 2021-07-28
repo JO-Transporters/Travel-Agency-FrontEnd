@@ -1,106 +1,196 @@
 import React from 'react';
 import { Card, Col, Row } from 'react-bootstrap/';
-import CardGroup from 'react-bootstrap/CardGroup'
+import CardGroup from 'react-bootstrap/CardGroup';
+import './AboutUs.css';
 
 
 
- 
 
-class AboutUs extends React.Component{
-    render(){
-        return(
-            <>
-                
 
-<h1>Our Team</h1>
-<CardGroup>
-  <Card>
-    <Card.Img variant="top" src="holder.js/100px160" />
-    <Card.Body>
-      <Card.Title>Mariam Alshammari</Card.Title>
-      <Card.Text>
-     
-                  <a href="https://github.com/MariamAlshammari" target="_blank" class="profile"></a>
-                    <h2 class="profile__name">Mariam Al-Shammari</h2>
-                    <p>Software Development Student</p>
-                    <p>malshammari37@gmail.com</p>
-                    
-                  
-               
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">
-     
-                               
-                                    </small>
-    </Card.Footer>
-  </Card>
-  <Card>
-    <Card.Img variant="top" src="holder.js/100px160" />
-    <Card.Body>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-       
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted"></small>
-    </Card.Footer>
-  </Card>
-  <Card>
-    <Card.Img variant="top" src="holder.js/100px160" />
-    <Card.Body>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-        
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted"></small>
-    </Card.Footer>
-  </Card>
-  <Card>
-    <Card.Img variant="top" src="holder.js/100px160" />
-    <Card.Body>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-        
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted"></small>
-    </Card.Footer>
-  </Card>
-  <Card>
-    <Card.Img variant="top" src="holder.js/100px160" />
-    <Card.Body>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-        
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted"></small>
-    </Card.Footer>
-  </Card>
-  <Card>
-    <Card.Img variant="top" src="holder.js/100px160" />
-    <Card.Body>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-        
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted"></small>
-    </Card.Footer>
-  </Card>
-  
-</CardGroup>
-            </>
-        )
-    }
+class AboutUs extends React.Component {
+  render() {
+    return (
+
+
+      <ul class="cards">
+        <li>
+          <a class="card" >
+            <img src="https://ca.slack-edge.com/TNGRRLUMA-U01U3M2GXFE-a0954ee44505-512" class="card__image" alt="" />
+            <div class="card__overlay">
+              <div class="card__header">
+                <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                <img class="card__thumb" src="https://ca.slack-edge.com/TNGRRLUMA-U01U3M2GXFE-a0954ee44505-512" alt="" />
+                <div class="card__header-text">
+                  <h3 class="card__title">Sanaa Al_Moghraby</h3>
+                  <span class="card__status">Computer Science</span>
+                </div>
+              </div>
+
+              <p class="card__description">
+                <a target="_blank" href="https://github.com/sanaa-almoghraby">
+                  <img src="https://img.icons8.com/material-outlined/24/000000/github.png" />
+                </a>
+
+                <a target="_blank" href="https://web.facebook.com/sanaakahlil/">
+                  <img src="https://img.icons8.com/fluent-systems-regular/32/000000/facebook.png" />
+                </a>
+
+                <a target="_blank" href="https://www.linkedin.com/in/sanaa-almoghraby-241303210/">
+                  <img src="https://img.icons8.com/material-outlined/32/000000/linkedin--v1.png" />
+                </a>
+              </p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="card" >
+            <img src="https://ca.slack-edge.com/TNGRRLUMA-U01TUDCH1D3-5453bbbf29fc-512" class="card__image" alt="" />
+            <div class="card__overlay">
+              <div class="card__header">
+                <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                <img class="card__thumb" src="https://ca.slack-edge.com/TNGRRLUMA-U01TUDCH1D3-5453bbbf29fc-512" alt="" />
+                <div class="card__header-text">
+                  <h3 class="card__title">Rafeef Alhayek</h3>
+                  <span class="card__status">English Language and Literature</span>
+                </div>
+              </div>
+              <p class="card__description">
+                <a target="_blank" href="https://github.com/R-Alhayek">
+                  <img src="https://img.icons8.com/material-outlined/24/000000/github.png" />
+                </a>
+
+                <a target="_blank" href="https://icons8.com/icon/107615/twitter-squared">
+                  <img src="https://img.icons8.com/fluent-systems-regular/32/000000/facebook.png" />
+                </a>
+
+                <a target="_blank" href="https://icons8.com/icon/107615/twitter-squared">
+                  <img src="https://img.icons8.com/material-outlined/32/000000/linkedin--v1.png" />
+                </a>
+
+              </p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="card" >
+            <img src="https://ca.slack-edge.com/TNGRRLUMA-U01TXQYRAPM-d6ba75ea02a0-512" class="card__image" alt="" />
+            <div class="card__overlay">
+              <div class="card__header">
+                <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                <img class="card__thumb" src="https://ca.slack-edge.com/TNGRRLUMA-U01TXQYRAPM-d6ba75ea02a0-512" alt="" />
+                <div class="card__header-text">
+                  <h3 class="card__title">Mariam Saber Alshammari</h3>
+                  {/* <span class="card__tagline">Computer Information Systems</span>             */}
+                  <span class="card__status">Computer Information Systems</span>
+                </div>
+              </div>
+              <p class="card__description">
+                <a target="_blank" href="https://github.com/MariamAlshammari?tab=repositories">
+                  <img src="https://img.icons8.com/material-outlined/24/000000/github.png" />
+                </a>
+
+                <a target="_blank" href="https://www.facebook.com/mariam.alshammary.1/">
+                  <img src="https://img.icons8.com/fluent-systems-regular/32/000000/facebook.png" />
+                </a>
+
+                <a target="_blank" href="https://www.linkedin.com/in/mariam-alshammari-9a5651134/">
+                  <img src="https://img.icons8.com/material-outlined/32/000000/linkedin--v1.png" />
+                </a>
+
+              </p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="card" >
+            <img src="https://ca.slack-edge.com/TNGRRLUMA-U01TGNASKRV-30688543cb75-512" class="card__image" alt="" />
+            <div class="card__overlay">
+              <div class="card__header">
+                <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                <img class="card__thumb" src="https://ca.slack-edge.com/TNGRRLUMA-U01TGNASKRV-30688543cb75-512" alt="" />
+                <div class="card__header-text">
+                  <h3 class="card__title">Siham khaloof</h3>
+                  <span class="card__status">Biomedical Engineer</span>
+                </div>
+              </div>
+              <p class="card__description">
+                <a target="_blank" href="https://github.com/sbkhaloof">
+                  <img src="https://img.icons8.com/material-outlined/24/000000/github.png" />
+                </a>
+                <a target="_blank" href="https://www.facebook.com/seham.malkawi.7">
+                  <img src="https://img.icons8.com/fluent-systems-regular/32/000000/facebook.png" />
+                </a>
+
+                <a target="_blank" href="https://www.linkedin.com/in/siham-khaloof-697475210/">
+                  <img src="https://img.icons8.com/material-outlined/32/000000/linkedin--v1.png" />
+                </a>
+
+              </p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="card" >
+            <img src="https://ca.slack-edge.com/TNGRRLUMA-U01TQN6SQHL-715676c120e7-512" class="card__image" alt="" />
+            <div class="card__overlay">
+              <div class="card__header">
+                <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                <img class="card__thumb" src="https://ca.slack-edge.com/TNGRRLUMA-U01TQN6SQHL-715676c120e7-512" alt="" />
+                <div class="card__header-text">
+                  <h3 class="card__title">Ibrahim Khdairat</h3>
+                  <span class="card__status">Power Electrical Engineering</span>
+                </div>
+              </div>
+              <p class="card__description">
+                <a target="_blank" href="https://github.com/Ibrahim-Khdairat">
+                  <img src="https://img.icons8.com/material-outlined/24/000000/github.png" />
+                </a>
+
+                <a target="_blank" href="https://www.facebook.com/ibrahim.kuderat">
+                  <img src="https://img.icons8.com/fluent-systems-regular/32/000000/facebook.png" />
+                </a>
+
+                <a target="_blank" href="https://www.linkedin.com/in/ibrahim-khdairat-4bb7811a2">
+                  <img src="https://img.icons8.com/material-outlined/32/000000/linkedin--v1.png" />
+                </a>
+
+              </p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="card" >
+            <img src="https://ca.slack-edge.com/TNGRRLUMA-U01TXMV8X7V-24cf038424c3-512" class="card__image" alt="" />
+            <div class="card__overlay">
+              <div class="card__header">
+                <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                <img class="card__thumb" src="https://ca.slack-edge.com/TNGRRLUMA-U01TXMV8X7V-24cf038424c3-512" alt="" />
+                <div class="card__header-text">
+                  <h3 class="card__title">Alaa Smadi</h3>
+                  <span class="card__status">Biomedical Engineer</span>
+                </div>
+              </div>
+              <p class="card__description">
+                <a target="_blank" href="https://github.com/AlaaN-Smadi">
+                  <img src="https://img.icons8.com/material-outlined/24/000000/github.png" />
+                </a>
+                <a target="_blank" href="https://icons8.com/icon/107615/twitter-squared">
+                  <img src="https://img.icons8.com/fluent-systems-regular/32/000000/facebook.png" />
+                </a>
+
+                <a target="_blank" href="https://www.linkedin.com/in/alaa-smadi-a9b17a210/">
+                  <img src="https://img.icons8.com/material-outlined/32/000000/linkedin--v1.png" />
+                </a>
+
+              </p>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+
+    )
+  }
 }
 
 export default AboutUs;
