@@ -29,11 +29,14 @@
   
   .booknow{
     font-weight: bold;
-    margin-left: 450px;
+    position: absolute;
+bottom: 9%;
+right: 5%;
+    /* margin-left: 450px; */
     width: 130px;
     border-radius: 15px;
   }
-  .booknow{
+  .booknow:hover{
     transform: scale(1.1);
   
   }
