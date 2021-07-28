@@ -69,7 +69,7 @@ class AboutUs extends React.Component {
                   <img src="https://img.icons8.com/fluent-systems-regular/32/000000/facebook.png" />
                 </a>
 
-                <a target="_blank" href="https://icons8.com/icon/107615/twitter-squared">
+                <a target="_blank" href="www.linkedin.com/in/rafeef-alhayek">
                   <img src="https://img.icons8.com/material-outlined/32/000000/linkedin--v1.png" />
                 </a>
 
