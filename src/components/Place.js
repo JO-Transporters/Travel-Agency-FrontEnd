@@ -351,7 +351,7 @@ class Place extends React.Component {
 
                 </div>
 
-                <img style={{ boxShadow: '2px 2px 2px #ccc' }} variant="top" src={`https://maps.locationiq.com/v3/staticmap?key=pk.3fb65df48ea9b1418d02d4dc6b9a89f1&center=${this.props.place.center[0]},${this.props.place.center[1]}&zoom=14`} alt="img" />
+                <img style={{ boxShadow: '2px 2px 2px #ccc' }} variant="top" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ}&center=${this.props.place.center[0]},${this.props.place.center[1]}&zoom=14`} alt="img" />
 
             </div>
         )
