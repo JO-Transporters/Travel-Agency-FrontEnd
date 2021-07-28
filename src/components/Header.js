@@ -20,12 +20,12 @@ class Header extends React.Component {
         const { user, isAuthenticated } = this.props.auth0;
 
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Link to="/" onClick={this.props.hidePlace}><Navbar.Brand>Travel Agency</Navbar.Brand></Link>
-                <Link to="/" onClick={this.props.hidePlace}>Home</Link>
+            <Navbar collapseOnSelect expand="lg"  id="nav">
+                <Link to="/" onClick={this.props.hidePlace}><Navbar.Brand id="title" >Black Iris <br/> Tours</Navbar.Brand></Link>
+                <Link to="/" onClick={this.props.hidePlace} className="pages">Home</Link>
 
-                <Link to="/profile">Profile</Link>
-                <Link to="/mybooks">My Books</Link>
+                <Link to="/profile" className="pages">Profile</Link>
+                <Link to="/mybooks" className="pages">Hotel Books</Link>
 
                 <Link to="/aboutUs">About Us</Link>
 
