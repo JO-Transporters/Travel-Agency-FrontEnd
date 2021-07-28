@@ -21,7 +21,7 @@ class MyBooks extends React.Component {
         let userEmail = {
             email: user.email
         }
-        let hotelsData = await axios.get(`http://localhost:3001/mybooks/${user.email}`, userEmail)
+        let hotelsData = await axios.get(`https://jordan-black-iris.herokuapp.com/mybooks/${user.email}`, userEmail)
         this.setState({
             myHotels: hotelsData.data[0].bookedData,
             userInfo: hotelsData.data[0]
@@ -29,7 +29,7 @@ class MyBooks extends React.Component {
     }
     cancelBook = async (index) => {
         const { user, isAuthenticated } = this.props.auth0;
-        let hotelsData = await axios.delete(`http://localhost:3001/deletebook/${index}/${user.email}`)
+        let hotelsData = await axios.delete(`https://jordan-black-iris.herokuapp.com/deletebook/${index}/${user.email}`)
         this.setState({
             myHotels: hotelsData.data,
         })
@@ -70,7 +70,7 @@ class MyBooks extends React.Component {
             checkInDate: event.target.in.value,
             checkOutDate: event.target.out.value,
         }
-        let updatedBook = await axios.put(`http://localhost:3001/updatebook/${this.state.index}/${user.email}`, updated);
+        let updatedBook = await axios.put(`https://jordan-black-iris.herokuapp.com/updatebook/${this.state.index}/${user.email}`, updated);
         this.setState({
             myHotels: updatedBook.data.bookedData
         })
