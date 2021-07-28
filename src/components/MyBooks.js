@@ -125,14 +125,14 @@ class MyBooks extends React.Component {
                 <Table striped bordered hover>
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>total price</th>
                             <th>Hotel Name</th>
                             <th>Kids Number</th>
                             <th>Rooms Number</th>
                             <th>Visitor Number</th>
                             <th>CheckIn Date</th>
                             <th>CheckOut Date</th>
-                            <th>total price</th>
+                            <th>#</th>
 
 
                         </tr>
@@ -141,8 +141,6 @@ class MyBooks extends React.Component {
                         {this.state.myHotels.map((hotel, index) => {
                             return (
                                 <tr>
-                                    <td> <Button onClick={() => { this.cancelBook(index) }} variant="danger">Cancel Booking</Button>
-                                        <Button onClick={() => { this.updateBook(index) }} variant="success">Update Book</Button> </td>
                                     <td>{hotel.hotelName}</td>
                                     <td>{hotel.kidsNum}</td>
                                     <td>{hotel.roomsNum}</td>
@@ -150,6 +148,9 @@ class MyBooks extends React.Component {
                                     <td>{hotel.checkInDate}</td>
                                     <td>{hotel.checkOutDate}</td>
                                     <td>{`${Number(Number(hotel.price) * Number(hotel.roomsNum))} JOD`}</td>
+                                    <td> <Button onClick={() => { this.cancelBook(index) }} variant="danger"> 🗶 </Button>
+                                        <Button onClick={() => { this.updateBook(index) }} variant="success"> 🖉 </Button> </td>
+
                                 </tr>
 
                             )
