@@ -27,6 +27,26 @@ class UpdateForm extends React.Component {
                                 <Form.Label>Place Image</Form.Label>
                                 <Form.Control type="text" defaultValue={this.props.updatedObj.img} name="img" />
                             </Form.Group>
+                            <Form.Group className="mb-3" >
+                                <Form.Label>First Image</Form.Label>
+                                <Form.Control type="text" defaultValue={this.props.updatedObj.slideShow1}  name="img1" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" >
+                                <Form.Label>Second Image</Form.Label>
+                                <Form.Control type="text" defaultValue={this.props.updatedObj.slideShow2}  name="img2" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" >
+                                <Form.Label>Thired Image</Form.Label>
+                                <Form.Control type="text" defaultValue={this.props.updatedObj.slideShow3}  name="img3" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" >
+                                <Form.Label>Longitude</Form.Label>
+                                <Form.Control type="text" defaultValue={this.props.updatedObj.lon}  name="lon" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" >
+                                <Form.Label>Latitude</Form.Label>
+                                <Form.Control type="text" defaultValue={this.props.updatedObj.lat}  name="lat" />
+                            </Form.Group>
                             <Modal.Footer>
                                 <Button variant="secondary" onClick={this.props.handleClose}>
                                     Close

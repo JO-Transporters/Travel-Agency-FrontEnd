@@ -27,6 +27,26 @@ class AddPlaceModal extends React.Component {
                                 <Form.Label>Place Image</Form.Label>
                                 <Form.Control type="text" placeholder="Enter Place Image Link" name="img" />
                             </Form.Group>
+                            <Form.Group className="mb-3" >
+                                <Form.Label>First Image</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Hotel Image Link" name="img1" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" >
+                                <Form.Label>Second Image</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Hotel Image Link" name="img2" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" >
+                                <Form.Label>Thired Image</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Hotel Image Link" name="img3" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" >
+                                <Form.Label>Longitude</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Place Longitude" name="lon" />
+                            </Form.Group>  <Form.Group className="mb-3" >
+                                <Form.Label>Latitude</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Place Latitude" name="lat" />
+                            </Form.Group>
+
                             <Modal.Footer>
                                 <Button variant="secondary" onClick={this.props.handleClose}>
                                     Close
