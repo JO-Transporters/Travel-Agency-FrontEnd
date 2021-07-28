@@ -170,7 +170,7 @@ class AboutUs extends React.Component {
                 <img class="card__thumb" src="https://ca.slack-edge.com/TNGRRLUMA-U01TXMV8X7V-24cf038424c3-512" alt="" />
                 <div class="card__header-text">
                   <h3 class="card__title">Alaa Smadi</h3>
-                  <span class="card__status">Biomedical Engineer</span>
+                  <span class="card__status">Survey Engineer</span>
                 </div>
               </div>
               <p class="card__description">
