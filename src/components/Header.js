@@ -11,7 +11,7 @@ import {
     Switch,
     Route
 } from "react-router-dom";
-
+import './Header.css'
 class Header extends React.Component {
  constructor(props){
      super(props)

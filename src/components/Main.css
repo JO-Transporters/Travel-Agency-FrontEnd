@@ -1,7 +1,29 @@
 .cardContainer{
     display: flex;
     flex-wrap: wrap;
+    font-family: 'Abril Fatface', cursive;
 }
-/* .cardContainer>* {
-    flex: 10 10 300px;
-} */
+#homeCard {
+    margin-left: 13px;
+    margin-top: 10px;
+  }
+  
+  #homeCardTitle {
+    color:#053c53;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 23px;
+  
+  }
+  body{
+    font-family: 'Abril Fatface', cursive;
+}
+h1{
+    text-align: center;
+    padding: 50px;
+    font-family: 'Abril Fatface', cursive;
+}
+  
+  
+  
