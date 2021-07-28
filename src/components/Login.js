@@ -2,21 +2,27 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import LoginButton from './buttons/LoginButton';
-// import './Login.css';
+import './Login.css';
 
 class Login extends React.Component {
   render() {
     return(
-      <Card style={{ width: '18rem' }}>
-        <Card.Body>
+      <div className = 'loginCard'>
+      <Card style={{ width: '22rem',height :'200px' }}>
+        <Card.Body className='cradbody'>
           <Card.Title>Log In</Card.Title>
           <Card.Text>
             Click Below to Log In
           </Card.Text>
-          <LoginButton/>  
+         
 
         </Card.Body>
+        <div className = 'button'>
+          <LoginButton/>  
+
+          </div>
       </Card>
+      </div>
     )
   }
 }

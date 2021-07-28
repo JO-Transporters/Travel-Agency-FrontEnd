@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap/'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withAuth0 } from '@auth0/auth0-react';
-import Login from './Login'
+import Login from './Login';
+import './Profile.css';
 
 class Profile extends Component {
     render() {
         const { user, isAuthenticated } = this.props.auth0;
         console.log(user);
         return (
-            <>
+            <div className = 'profile'>
                 {
                     <>
                         {isAuthenticated ? 
@@ -31,7 +32,7 @@ class Profile extends Component {
                     </>
                 }
 
-            </>
+            </div>
         )
     }
 }

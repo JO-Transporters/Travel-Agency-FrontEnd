@@ -21,13 +21,13 @@ class Header extends React.Component {
 
         return (
             <Navbar collapseOnSelect expand="lg"  id="nav">
-                <Link to="/" onClick={this.props.hidePlace}><Navbar.Brand id="title" >Black Iris <br/> Tours</Navbar.Brand></Link>
-                <Link to="/" onClick={this.props.hidePlace} className="pages">Home</Link>
+                <Link to="/" className="title" onClick={this.props.hidePlace}><Navbar.Brand id = 'title' >Black Iris Tours</Navbar.Brand></Link>
 
+                <Link to="/" onClick={this.props.hidePlace} className="pages">Home</Link>
                 <Link to="/profile" className="pages">Profile</Link>
                 <Link to="/mybooks" className="pages">Hotel Books</Link>
 
-                <Link to="/aboutUs">About Us</Link>
+                <Link to="/aboutUs" className="pages" id='aboutus'>About Us</Link>
 
 
                 {/* TODO: if the user is logged in, render the `LogoutButton` - if the user is logged out, render the `LoginButton` */}
