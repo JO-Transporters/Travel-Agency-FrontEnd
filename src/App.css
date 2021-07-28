@@ -40,12 +40,16 @@
 
 #footer {
   background-color: #05445E;
+  width: 100%;
+ height: 430px;
   padding-left: 25px;
   color:#D4F1F4;
   font-family: 'Roboto Mono', monospace;
   font-size: small;
   margin-top: 30px;
+
 }
+
 
 .about {
   
@@ -134,4 +138,38 @@
   font-weight: bold;
   font-size: 23px;
 
+}
+#logodiv{
+  display: block;
+  float: right;
+  width: 300px;
+  background-color:#05445E;
+  margin-top: 80px;
+  margin-right: 100px;
+
+}
+#logo{
+  width: 300px;
+  height: 300px;
+  border-radius: 300px;
+}
+#text{
+  display: block;
+  width: 600px;
+  float: left;
+  background-color:#05445E;
+  margin-left: 50px;
+
+}
+#logodivH{display: block;
+  float: left;
+  width: 1px;
+  background-color:#05445E;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+#logoH{
+  width: 150px;
+  height: 150px;
+  border-radius: 300px;
 }
