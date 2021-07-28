@@ -27,6 +27,7 @@ class Header extends React.Component {
                 <Link to="/profile" className="pages">Profile</Link>
                 <Link to="/mybooks" className="pages">Hotel Books</Link>
 
+                <Link to="/aboutUs">About Us</Link>
 
 
                 {/* TODO: if the user is logged in, render the `LogoutButton` - if the user is logged out, render the `LoginButton` */}
