@@ -44,13 +44,37 @@ class Place extends React.Component {
             }
         }
 
-        let placesData = await axios.get('http://localhost:3001/places')
+        let userOnLS = JSON.parse(localStorage.getItem("Hotels"));
 
-        this.setState({
-            hotelsArray: placesData.data[this.props.index].hotels,
-            adminAccess: adminAuth,
+        if (userOnLS !== undefined && userOnLS!== null) {
+            this.setState({
+                hotelsArray: userOnLS[this.props.index].hotels,
+                adminAccess: adminAuth,
 
-        })
+            })
+
+        }
+        else {
+            let placesData = await axios.get('http://localhost:3001/places')
+            let data = JSON.stringify(placesData.data);
+            localStorage.setItem("Hotels", data);
+            this.setState({
+                hotelsArray: placesData.data[this.props.index].hotels,
+                adminAccess: adminAuth,
+    
+            })
+
+        }
+
+      
+
+        // let placesData = await axios.get('http://localhost:3001/places')
+
+        // this.setState({
+        //     hotelsArray: placesData.data[this.props.index].hotels,
+        //     adminAccess: adminAuth,
+
+        // })
 
 
     }

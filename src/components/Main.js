@@ -7,6 +7,7 @@ import UpdateForm from './buttons/UpdateForm';
 import './Main.css'
 import HomeSlides from './HomeSlides';
 
+
 class Main extends React.Component {
 
     constructor(props) {
@@ -17,7 +18,7 @@ class Main extends React.Component {
             addPlace: false,
             showUpdate: false,
             index: 0,
-            updatedObj: {}
+            updatedObj: {},
         }
 
     }
@@ -37,16 +38,42 @@ class Main extends React.Component {
 
             }
         }
-        let placesData = await axios.get('http://localhost:3001/places')
-
-       this.setState({
-
-            placesArray: placesData.data,
-            adminAccess: adminAuth,
-        })
 
 
 
+        let userOnLS = JSON.parse(localStorage.getItem("Places"));
+
+        if (userOnLS !== undefined &&userOnLS !== null ) {
+            console.log('already');
+            this.setState({
+                placesArray: userOnLS,
+                adminAccess: adminAuth,
+
+            })
+
+        }
+        else {
+            console.log('new');
+
+            let placesData = await axios.get('http://localhost:3001/places')
+            let data = JSON.stringify(placesData.data);
+            localStorage.setItem("Places", data);
+            this.setState({
+
+                placesArray: placesData.data,
+                adminAccess: adminAuth,
+            })
+
+        }
+
+        // let placesData = await axios.get('http://localhost:3001/places');
+
+        //     this.setState({
+
+        //         inMemoryResponse: placesData.data,
+        //         placesArray : placesData.data,
+        //          adminAccess: adminAuth,
+        //      })
     }
 
     addPlace = async () => {
@@ -69,18 +96,20 @@ class Main extends React.Component {
         })
         let slideshow = [event.target.img1.value, event.target.img2.value, event.target.img3.value]
 
-        let locCenter = [event.target.lat.value , event.target.lon.value]
+        let locCenter = [event.target.lat.value, event.target.lon.value]
 
         let placeObj = {
             name: event.target.name.value,
             img: event.target.img.value,
             slideShowimg: slideshow,
-            center : locCenter
+            center: locCenter
 
         }
         console.log(placeObj);
         let placeData = await axios.post('http://localhost:3001/add', placeObj)
-
+        localStorage.removeItem("Place");
+        let data = JSON.stringify(placeData.data);
+        localStorage.setItem("Places", data);
         this.setState({
             placesArray: placeData.data
         })
@@ -89,7 +118,9 @@ class Main extends React.Component {
     deletePlace = async (index) => {
 
         let placeData = await axios.delete(`http://localhost:3001/delete/${index}`)
-
+        localStorage.removeItem("Place");
+        let data = JSON.stringify(placeData.data);
+        localStorage.setItem("Places", data);
         this.setState({
             placesArray: placeData.data
         })
@@ -102,8 +133,8 @@ class Main extends React.Component {
             slideShow1: this.state.placesArray[index].slideShow[0],
             slideShow2: this.state.placesArray[index].slideShow[1],
             slideShow3: this.state.placesArray[index].slideShow[2],
-            lat : this.state.placesArray[index].center[0],
-            lon : this.state.placesArray[index].center[1],
+            lat: this.state.placesArray[index].center[0],
+            lon: this.state.placesArray[index].center[1],
 
 
 
@@ -119,20 +150,22 @@ class Main extends React.Component {
     updatePlace = async (event) => {
         event.preventDefault();
         let slideshow = [event.target.img1.value, event.target.img2.value, event.target.img3.value]
-        let locCenter = [event.target.lat.value , event.target.lon.value ]
+        let locCenter = [event.target.lat.value, event.target.lon.value]
         let updateInfo = {
             name: event.target.name.value,
             img: event.target.img.value,
             slideShowimg: slideshow,
             hotels: this.state.placesArray[this.state.index].hotels,
-            center:locCenter,
+            center: locCenter,
 
 
         }
-        
+
 
         let placeData = await axios.put(`http://localhost:3001/update/${this.state.index}`, updateInfo)
-
+        localStorage.removeItem("Place");
+        let data = JSON.stringify(placeData.data);
+        localStorage.setItem("Places", data);
         this.setState({
             placesArray: placeData.data,
             showUpdate: false,
@@ -175,8 +208,8 @@ class Main extends React.Component {
                                 {
                                     this.state.adminAccess &&
                                     <Card.Footer>
-                                    <Button variant="danger" onClick={() => { this.deletePlace(index) }}>Delete</Button>
-                                    <Button variant="warning" onClick={() => { this.updateFormShow(index) }} >Update</Button>
+                                        <Button variant="danger" onClick={() => { this.deletePlace(index) }}>Delete</Button>
+                                        <Button variant="warning" onClick={() => { this.updateFormShow(index) }} >Update</Button>
                                     </Card.Footer>
                                 }
                             </Card>
