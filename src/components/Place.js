@@ -289,10 +289,11 @@ class Place extends React.Component {
                                             price : {`${hotel.price} JOD`}
                                         </Card.Text>
                                     </Card.Body>
-                                    <Button className='booknow' onClick={() => this.bookNow(hotel.hotelName, hotelIndex, hotel.price)} variant="primary">Book Now</Button>
+                                 
 
 
                                 </div>
+                                <Button className='booknow' onClick={() => this.bookNow(hotel.hotelName, hotelIndex, hotel.price)} variant="primary">Book Now</Button>
                                 <Card.Footer className='adminbutton'>
                                     <Button onClick={() => this.updateHotel(hotelIndex)}  variant="warning">Update</Button>
                                     <Button onClick={() => this.deleteHotel(hotelIndex)} variant="danger">Delete</Button>
