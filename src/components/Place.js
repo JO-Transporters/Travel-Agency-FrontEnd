@@ -58,7 +58,7 @@ class Place extends React.Component {
     bookNow = async (hotelName, index, price) => {
 
 
-        await this.setState({
+        this.setState({
             hotelName: hotelName,
             price: price,
             showBookModal: true,
@@ -68,13 +68,13 @@ class Place extends React.Component {
     }
 
     setShow = async () => {
-        await this.setState({
+        this.setState({
             alert: false
         })
     }
 
     addHotel = async () => {
-        await this.setState({
+        this.setState({
             showAddHotel: true,
         })
     }
@@ -91,18 +91,18 @@ class Place extends React.Component {
 
         let hotelData = await axios.post(`http://localhost:3001/addHotel/${this.props.index}`, hotelObj);
 
-        await this.setState({
+        this.setState({
             hotelsArray: hotelData.data[this.props.index].hotels,
         })
 
 
-        await this.setState({
+        this.setState({
             showAddHotel: false,
         })
     }
 
     handleClose = async () => {
-        await this.setState({
+        this.setState({
             showAddHotel: false,
             showHotelUpdate: false,
             showBookModal: false
@@ -115,7 +115,7 @@ class Place extends React.Component {
 
         let hotelData = await axios.delete(`http://localhost:3001/deletehotel/${this.props.index}/${hotelIndex}`)
 
-        await this.setState({
+        this.setState({
             hotelsArray: hotelData.data[this.props.index].hotels,
 
         })
@@ -123,7 +123,7 @@ class Place extends React.Component {
     }
 
     updateHotel = async (hotelIndex) => {
-        await this.setState({
+        this.setState({
             showHotelUpdate: true,
             hotelIndex: hotelIndex,
             hotelObj: this.state.hotelsArray[hotelIndex],
@@ -146,7 +146,7 @@ class Place extends React.Component {
 
 
 
-        await this.setState({
+        this.setState({
             hotelsArray: hotelData.data[this.props.index].hotels,
 
             showHotelUpdate: false,
@@ -174,7 +174,7 @@ class Place extends React.Component {
 
         let userBookInfo = await axios.post(`http://localhost:3001/addnewbook`, bookedObj);
 
-        await this.setState({
+        this.setState({
             showBookModal: false
         })
 

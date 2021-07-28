@@ -50,13 +50,13 @@ class Main extends React.Component {
     }
 
     addPlace = async () => {
-        await this.setState({
+        this.setState({
             addPlace: true
         })
     }
 
     handleClose = async () => {
-        await this.setState({
+        this.setState({
             addPlace: false,
             showUpdate: false,
         })
@@ -64,7 +64,7 @@ class Main extends React.Component {
 
     handleSubmit = async (event) => {
         event.preventDefault();
-        await this.setState({
+        this.setState({
             addPlace: false
         })
         let slideshow = [event.target.img1.value, event.target.img2.value, event.target.img3.value]
@@ -81,7 +81,7 @@ class Main extends React.Component {
         console.log(placeObj);
         let placeData = await axios.post('http://localhost:3001/add', placeObj)
 
-        await this.setState({
+        this.setState({
             placesArray: placeData.data
         })
     }
@@ -90,7 +90,7 @@ class Main extends React.Component {
 
         let placeData = await axios.delete(`http://localhost:3001/delete/${index}`)
 
-        await this.setState({
+        this.setState({
             placesArray: placeData.data
         })
     }
@@ -109,7 +109,7 @@ class Main extends React.Component {
 
         }
         console.log(updatedObj);
-        await this.setState({
+        this.setState({
             showUpdate: true,
             index: index,
             updatedObj: updatedObj
@@ -133,7 +133,7 @@ class Main extends React.Component {
 
         let placeData = await axios.put(`http://localhost:3001/update/${this.state.index}`, updateInfo)
 
-        await this.setState({
+        this.setState({
             placesArray: placeData.data,
             showUpdate: false,
             updatedObj: {},

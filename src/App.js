@@ -32,7 +32,7 @@ class App extends React.Component {
 
 
   selectedPlace = async (place, index) => {
-    await this.setState({
+    this.setState({
       showPlace: true,
       place: place,
       index: index,
@@ -41,7 +41,7 @@ class App extends React.Component {
   }
 
   hidePlace = async () => {
-    await this.setState({
+    this.setState({
       showPlace: false,
       place: {}
     })

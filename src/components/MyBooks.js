@@ -33,7 +33,7 @@ class MyBooks extends React.Component {
         let hotelsData = await axios.get(`http://localhost:3001/mybooks/${user.email}`, userEmail)
 
 
-        await this.setState({
+        this.setState({
             myHotels: hotelsData.data[0].bookedData,
             userInfo: hotelsData.data[0]
         })
@@ -48,7 +48,7 @@ class MyBooks extends React.Component {
     
         let hotelsData = await axios.delete (`http://localhost:3001/deletebook/${index}/${user.email}`)
      
-        await this.setState({
+        this.setState({
             myHotels: hotelsData.data,
         
         })
@@ -57,7 +57,7 @@ class MyBooks extends React.Component {
     }
 
     handleClose = async () =>{
-        await this.setState({
+        this.setState({
             show : false
         })
     }
@@ -66,7 +66,7 @@ class MyBooks extends React.Component {
       
         const { hotelName, kidsNum, roomsNum, visitorsNum,checkInDate,checkOutDate ,price} = this.state.myHotels[index];
 
-        await this.setState({
+        this.setState({
             index : index,
             show : true,
             bookInfo : {
@@ -86,7 +86,7 @@ class MyBooks extends React.Component {
         const { user, isAuthenticated } = this.props.auth0;
 
 
-        await this.setState({
+        this.setState({
             show : false,
         })
 
@@ -102,7 +102,7 @@ class MyBooks extends React.Component {
 
         let updatedBook = await axios.put(`http://localhost:3001/updatebook/${this.state.index}/${user.email}` ,updated );
 
-        await this.setState({
+        this.setState({
             myHotels : updatedBook.data.bookedData
         })
 
