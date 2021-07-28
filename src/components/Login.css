@@ -1,0 +1,22 @@
+.loginCard {
+    display: block;
+    width: 300px;
+    height: 200px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button {
+    position: absolute;
+   bottom: 3%;
+   left: -42%;
+}
+
+#login {
+    width: 150px;
+
+}
+.cradbody {
+    text-align: center;
+}

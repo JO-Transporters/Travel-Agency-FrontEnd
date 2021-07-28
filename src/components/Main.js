@@ -42,7 +42,7 @@ class Main extends React.Component {
        this.setState({
 
             placesArray: placesData.data,
-            adminAccess: true,
+            adminAccess: adminAuth,
         })
 
 

@@ -1,0 +1,13 @@
+.alertBody {
+    min-height: 400px;
+}
+.alert {
+    text-align: center;
+    height: 150px;
+    
+}
+.login {
+    position: absolute;
+    left: 30%;
+    bottom: 7%;
+}

@@ -15,6 +15,7 @@ import {
   Route
 } from "react-router-dom";
 import MyBooks from './components/MyBooks';
+import MyResrevs from './components/MyResrevs';
 import HomeSlides from './components/HomeSlides';
 import './App.css';
 
@@ -71,7 +72,7 @@ class App extends React.Component {
             </Route>
 
             <Route exact path="/mybooks">
-              <MyBooks />
+             <MyResrevs/>
             </Route>
 
             <Route exact path="/aboutUs">

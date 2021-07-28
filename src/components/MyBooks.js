@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Card, Button } from 'react-bootstrap/';
 import Table from 'react-bootstrap/Table';
 import UpdateBook from './buttons/UpdateBook';
+import './MyBooks.css'
 
 
 
@@ -15,9 +16,9 @@ class MyBooks extends React.Component {
         this.state = {
             myHotels: [],
             userInfo: {},
-            show : false,
-            index : 0,
-            bookInfo : {},
+            show: false,
+            index: 0,
+            bookInfo: {},
 
         }
     }
@@ -42,68 +43,69 @@ class MyBooks extends React.Component {
     }
 
 
-    cancelBook = async (index)=> {
+    cancelBook = async (index) => {
         const { user, isAuthenticated } = this.props.auth0;
 
-    
-        let hotelsData = await axios.delete (`http://localhost:3001/deletebook/${index}/${user.email}`)
-     
+
+        let hotelsData = await axios.delete(`http://localhost:3001/deletebook/${index}/${user.email}`)
+
         this.setState({
             myHotels: hotelsData.data,
-        
+
         })
-        
+
 
     }
 
-    handleClose = async () =>{
+    handleClose = async () => {
         this.setState({
-            show : false
+            show: false
         })
     }
 
-    updateBook = async (index) =>{
-      
-        const { hotelName, kidsNum, roomsNum, visitorsNum,checkInDate,checkOutDate ,price} = this.state.myHotels[index];
+    updateBook = async (index) => {
+
+        const { hotelName, kidsNum, roomsNum, visitorsNum, checkInDate, checkOutDate, price } = this.state.myHotels[index];
 
         this.setState({
-            index : index,
-            show : true,
-            bookInfo : {
-                hotelName : hotelName,
-                kidsNum : kidsNum,
-                roomsNum : roomsNum,
-                visitorsNum : visitorsNum,
-                checkInDate : checkInDate,
-                checkOutDate : checkOutDate,
+            index: index,
+            show: true,
+            bookInfo: {
+                hotelName: hotelName,
+                kidsNum: kidsNum,
+                roomsNum: roomsNum,
+                visitorsNum: visitorsNum,
+                checkInDate: checkInDate,
+                checkOutDate: checkOutDate,
                 price: price,
             }
         })
     }
 
-    handleUpdate = async (event) =>{
+    handleUpdate = async (event) => {
         event.preventDefault();
         const { user, isAuthenticated } = this.props.auth0;
 
 
         this.setState({
-            show : false,
+            show: false,
         })
 
         let updated = {
-            hotelName : this.state.myHotels[this.state.index].hotelName,
-            price:this.state.myHotels[this.state.index].price,
-            kidsNum : event.target.kids.value,
-            roomsNum : event.target.room.value,
-            visitorsNum : event.target.visit.value,
-            checkInDate : event.target.in.value,
-            checkOutDate : event.target.out.value,
+            hotelName: this.state.myHotels[this.state.index].hotelName,
+            price: this.state.myHotels[this.state.index].price,
+            kidsNum: event.target.kids.value,
+            roomsNum: event.target.room.value,
+            visitorsNum: event.target.visit.value,
+            checkInDate: event.target.in.value,
+            checkOutDate: event.target.out.value,
         }
 
-        let updatedBook = await axios.put(`http://localhost:3001/updatebook/${this.state.index}/${user.email}` ,updated );
+
+        let updatedBook = await axios.put(`http://localhost:3001/updatebook/${this.state.index}/${user.email}`, updated);
 
         this.setState({
-            myHotels : updatedBook.data.bookedData
+            myHotels: updatedBook.data.bookedData
         })
 
     }
@@ -113,9 +115,10 @@ class MyBooks extends React.Component {
         const { user, isAuthenticated } = this.props.auth0;
 
         return (
-            <div>
-                <UpdateBook show = {this.state.show} handleClose = {this.handleClose} bookInfo = {this.state.bookInfo} handleUpdate = {this.handleUpdate}/>
-                <h1>this page for booked hotels</h1>
+            <div className="mybooks">
+                <UpdateBook show={this.state.show} handleClose={this.handleClose} bookInfo={this.state.bookInfo} handleUpdate={this.handleUpdate} />
+
+
                 <h3>Name : {this.state.userInfo.userName}</h3>
 
 
@@ -135,63 +138,31 @@ class MyBooks extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.myHotels.map((hotel,index) => {
+                        {this.state.myHotels.map((hotel, index) => {
                             return (
                                 <tr>
-                                    <td> <Button onClick={()=>{this.cancelBook(index)}} variant="danger">Cancel Booking</Button>
-                                    <Button onClick={()=>{this.updateBook(index)}}  variant="success">Update Book</Button> </td>
+                                    <td> <Button onClick={() => { this.cancelBook(index) }} variant="danger">Cancel Booking</Button>
+                                        <Button onClick={() => { this.updateBook(index) }} variant="success">Update Book</Button> </td>
                                     <td>{hotel.hotelName}</td>
                                     <td>{hotel.kidsNum}</td>
                                     <td>{hotel.roomsNum}</td>
                                     <td>{hotel.visitorsNum}</td>
                                     <td>{hotel.checkInDate}</td>
                                     <td>{hotel.checkOutDate}</td>
-                                    <td>{`${Number(hotel.price)*Number(hotel.roomsNum)} JOD`}</td>
+                                    <td>{`${Number(Number(hotel.price) * Number(hotel.roomsNum))} JOD`}</td>
                                 </tr>
 
                             )
                         })
                         }
-                      
+
 
 
                     </tbody>
                 </Table>
 
-                {
-                    // isAuthenticated && 
-
-                    //     this.state.myHotels.map(hotel => {
-                    //         return (
-                    //             <Card className="place" style={{ width: '18rem', backgroundColor: 'lightgrey', boxShadow: '2px 2px 2px black' }} >
-
-                    //                 <Card.Body>
-                    //                     <Card.Title>{hotel.hotelName}</Card.Title>
-
-                    //                     {/* <Card.Img style={{
-                    //                         boxShadow: '2px 2px 2px #ccc',
-                    //                         width: '200px', height: '200px'
-                    //                     }} variant="top"
-                    //                         src={hotel.hotelimg} alt={hotel.hotelName} /> */}
-                    //                     <Card.Text>
-                    //                         numberof room : {hotel.roomsNum}
-                    //                     </Card.Text>
-                    //                     <Card.Text>
-                    //                         numof kids  : {hotel.kidsNum}
-                    //                     </Card.Text>
-                    //                 </Card.Body>
-
-                    //                 {/* <Button onClick={() => this.deleteHotel(hotelIndex)} variant="danger" >Delete</Button>
-                    //                 <Button onClick={() => this.updateHotel(hotelIndex)} variant="warning" >Update</Button>
-                    //                 <Button onClick={() => this.bookNow(hotel.hotelName, hotelIndex)} variant="primary">Book Now</Button> */}
-                    //             </Card>
-                    //         )
-                    //     })
-                }
-
-
-
             </div>
+
         )
     }
 }

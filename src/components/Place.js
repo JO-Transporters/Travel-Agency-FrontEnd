@@ -48,7 +48,7 @@ class Place extends React.Component {
 
         this.setState({
             hotelsArray: placesData.data[this.props.index].hotels,
-            adminAccess: true,
+            adminAccess: adminAuth,
 
         })
 
@@ -190,7 +190,7 @@ class Place extends React.Component {
 
                 <PlaceSlides slideshowimg={this.props.place.slideShow} />
 
-                <img style={{ boxShadow: '2px 2px 2px #ccc' }} variant="top" src={`https://maps.locationiq.com/v3/staticmap?key=pk.3fb65df48ea9b1418d02d4dc6b9a89f1&center=${this.props.place.center[0]},${this.props.place.center[1]}&zoom=14`} alt="img" />
+
 
                 {this.state.adminAccess &&
                     <div style={{ width: '100%' }}>
@@ -273,7 +273,7 @@ class Place extends React.Component {
 
                                 <div className="bodyStyle" >
                                     <Card.Body>
-                                    <Card.Title>{hotel.hotelName}</Card.Title>
+                                        <Card.Title>{hotel.hotelName}</Card.Title>
 
                                         <Card.Text>
                                             location : {hotel.location}
@@ -289,15 +289,18 @@ class Place extends React.Component {
                                             price : {`${hotel.price} JOD`}
                                         </Card.Text>
                                     </Card.Body>
-                                 
+
 
 
                                 </div>
                                 <Button className='booknow' onClick={() => this.bookNow(hotel.hotelName, hotelIndex, hotel.price)} variant="primary">Book Now</Button>
-                                <Card.Footer className='adminbutton'>
-                                    <Button onClick={() => this.updateHotel(hotelIndex)}  variant="warning">Update</Button>
-                                    <Button onClick={() => this.deleteHotel(hotelIndex)} variant="danger">Delete</Button>
-                                </Card.Footer>
+                                {this.state.adminAccess &&
+                                    <Card.Footer className='adminbutton'>
+                                        <Button onClick={() => this.updateHotel(hotelIndex)} variant="warning">Update</Button>
+                                        <Button onClick={() => this.deleteHotel(hotelIndex)} variant="danger">Delete</Button>
+                                    </Card.Footer>
+                                }
+
 
                             </Card>
 
@@ -313,7 +316,7 @@ class Place extends React.Component {
 
                 </div>
 
-
+                <img style={{ boxShadow: '2px 2px 2px #ccc' }} variant="top" src={`https://maps.locationiq.com/v3/staticmap?key=pk.3fb65df48ea9b1418d02d4dc6b9a89f1&center=${this.props.place.center[0]},${this.props.place.center[1]}&zoom=14`} alt="img" />
 
             </div>
         )
