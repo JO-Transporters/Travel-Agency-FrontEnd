@@ -227,12 +227,12 @@ class Place extends React.Component {
 
 
 
-                {this.state.adminAccess &&
+                {/* {this.state.adminAccess &&
                     <div style={{ width: '100%' }}>
                         <Button onClick={this.addHotel} variant="primary">Add Hotel</Button>
 
                     </div>
-                }
+                } */}
 
                 <AddHotelModal show={this.state.showAddHotel}
                     handleClose={this.handleClose}
@@ -250,6 +250,28 @@ class Place extends React.Component {
                 <h2 style={{ backgroundColor: '#05445E', color: '#D4F1F4', textAlign: 'center' }}>{this.props.place.name}</h2>
 
 
+                {
+                    this.state.adminAccess &&
+                    <div className='updatehotel'>
+                        <Card style={{
+                            width: '18rem', height: '150px', boxShadow: '2px 2px 2px black'
+                        }}>
+                            <Card.Body className='updatehotelbody'>
+                                <Card.Title>Add Hotel</Card.Title>
+                                <Card.Text>
+                                    Click Below to Add a Hotel
+                                </Card.Text>
+
+
+                            </Card.Body>
+                            <div className='updatehotelbutton'>
+                            <Button onClick={this.addHotel} variant="primary">Add Hotel</Button>
+
+                            </div>
+                        </Card>
+                    </div>
+
+                }
                 <div className='cardcontainer'>
 
                     {this.state.hotelsArray.map((hotel, hotelIndex) => {
