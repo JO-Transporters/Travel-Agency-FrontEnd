@@ -61,3 +61,23 @@
   width: 350px;
   margin-Left: 200px;
 }
+
+
+
+.updatehotel {
+  position: absolute;
+  top: 110%;
+}
+
+.updatehotelbody{
+text-align: center;}
+.updatehotelbutton {
+  display: block;
+  width: 130px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.updatehotelbutton button:hover {
+transform: scale(1.1);
+}

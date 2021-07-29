@@ -20,9 +20,20 @@
     font-family: 'Abril Fatface', cursive;
 }
 h1{
+  
     text-align: center;
     padding: 50px;
+    margin-top: 40px;
+    margin-bottom: 20px;
     font-family: 'Abril Fatface', cursive;
+}
+.place {
+  background-color: #B1D4E0;
+}
+.place:hover {
+  transform: scale(1.05);
+ background-color: #31a1c7;
+
 }
   
 .update {
@@ -37,3 +48,27 @@ h1{
     margin: 15px;
 }
   
+.updateCard {
+  position: absolute;
+  top: 97%;
+}
+
+
+
+.updatecradbody{
+text-align: center;}
+.updatebutton {
+  display: block;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.updatebutton button:hover {
+transform: scale(1.1);
+}
+
+/* #updateCard {
+  background-color: #31a1c7;
+} */
+

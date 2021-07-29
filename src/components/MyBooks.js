@@ -21,7 +21,13 @@ class MyBooks extends React.Component {
         let userEmail = {
             email: user.email
         }
+
+
+
+
         let hotelsData = await axios.get(`https://jordan-black-iris.herokuapp.com/mybooks/${user.email}`, userEmail)
+        let data = JSON.stringify(hotelsData.data[0].bookedData);
+        localStorage.setItem("Books", data);
         this.setState({
             myHotels: hotelsData.data[0].bookedData,
             userInfo: hotelsData.data[0]
@@ -30,6 +36,9 @@ class MyBooks extends React.Component {
     cancelBook = async (index) => {
         const { user, isAuthenticated } = this.props.auth0;
         let hotelsData = await axios.delete(`https://jordan-black-iris.herokuapp.com/deletebook/${index}/${user.email}`)
+        localStorage.removeItem("Books");
+        let data = JSON.stringify(hotelsData.data);
+        localStorage.setItem("Books", data);
         this.setState({
             myHotels: hotelsData.data,
         })
@@ -71,6 +80,7 @@ class MyBooks extends React.Component {
             checkOutDate: event.target.out.value,
         }
         let updatedBook = await axios.put(`https://jordan-black-iris.herokuapp.com/updatebook/${this.state.index}/${user.email}`, updated);
+      
         this.setState({
             myHotels: updatedBook.data.bookedData
         })
@@ -79,44 +89,44 @@ class MyBooks extends React.Component {
         const { user, isAuthenticated } = this.props.auth0;
         return (
             <>
-            <div className="mybooks">
-                <UpdateBook show={this.state.show} handleClose={this.handleClose} bookInfo={this.state.bookInfo} handleUpdate={this.handleUpdate} />
-                <h1  style={{ fontFamily: 'Roboto Mono' , color:'#05445E'}}>{this.state.userInfo.userName} Books</h1>
-                {/* <h3>Name : {this.state.userInfo.userName}</h3> */}
-                <Table striped bordered hover>
-                    <thead style={{  backgroundColor: '#05445E', color:'#D4F1F4'}}>
-                        <tr>
-                            <th>Hotel Name</th>
-                            <th>Kids Number</th>
-                            <th>Rooms Number</th>
-                            <th>Visitor Number</th>
-                            <th>CheckIn Date</th>
-                            <th>CheckOut Date</th>
-                            <th>total price</th>
-                            <th>#</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.myHotels.map((hotel, index) => {
-                            return (
-                                <tr>
-                                    <td>{hotel.hotelName}</td>
-                                    <td>{hotel.kidsNum}</td>
-                                    <td>{hotel.roomsNum}</td>
-                                    <td>{hotel.visitorsNum}</td>
-                                    <td>{hotel.checkInDate}</td>
-                                    <td>{hotel.checkOutDate}</td>
-                                    <td>{`${Number(Number(hotel.price) * Number(hotel.roomsNum))} JOD`}</td>
-                                    <td> <Button onClick={() => { this.cancelBook(index) }} variant="danger"> 🗶 </Button>
-                                        <Button onClick={() => { this.updateBook(index) }} variant="success"> 🖉 </Button> </td>
-                                </tr>
-                            )
-                        })
-                        }
-                    </tbody>
-                </Table>
-            </div>
-</>
+                <div className="mybooks">
+                    <UpdateBook show={this.state.show} handleClose={this.handleClose} bookInfo={this.state.bookInfo} handleUpdate={this.handleUpdate} />
+                    <h1 style={{ fontFamily: 'Roboto Mono', color: '#05445E' }}>{this.state.userInfo.userName} Books</h1>
+                    {/* <h3>Name : {this.state.userInfo.userName}</h3> */}
+                    <Table striped bordered hover>
+                        <thead style={{ backgroundColor: '#05445E', color: '#D4F1F4' }}>
+                            <tr>
+                                <th>Hotel Name</th>
+                                <th>Kids Number</th>
+                                <th>Rooms Number</th>
+                                <th>Visitor Number</th>
+                                <th>CheckIn Date</th>
+                                <th>CheckOut Date</th>
+                                <th>total price</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.myHotels.map((hotel, index) => {
+                                return (
+                                    <tr>
+                                        <td>{hotel.hotelName}</td>
+                                        <td>{hotel.kidsNum}</td>
+                                        <td>{hotel.roomsNum}</td>
+                                        <td>{hotel.visitorsNum}</td>
+                                        <td>{hotel.checkInDate}</td>
+                                        <td>{hotel.checkOutDate}</td>
+                                        <td>{`${Number(Number(hotel.price) * Number(hotel.roomsNum))} JOD`}</td>
+                                        <td> <Button onClick={() => { this.cancelBook(index) }} variant="danger"> 🗶 </Button>
+                                            <Button onClick={() => { this.updateBook(index) }} variant="success"> 🖉 </Button> </td>
+                                    </tr>
+                                )
+                            })
+                            }
+                        </tbody>
+                    </Table>
+                </div>
+            </>
         )
     }
 }
