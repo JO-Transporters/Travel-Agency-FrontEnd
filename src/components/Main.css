@@ -1,7 +1,8 @@
 .cardContainer{
-    display: flex;
-    flex-wrap: wrap;
-    font-family: 'Abril Fatface', cursive;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: 'Abril Fatface', cursive;
+  justify-content: space-evenly;
 }
 #homeCard {
     margin-left: 13px;
